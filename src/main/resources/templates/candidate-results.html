@@ -1,0 +1,15 @@
+<h2>Мои результаты</h2>
+
+<table>
+    <tr>
+        <th>Вакансия</th>
+        <th>Баллы</th>
+        <th>Статус</th>
+    </tr>
+
+    <tr th:each="r : ${results}">
+        <td th:text="${r.vacancy.title}"></td>
+        <td th:text="${r.score}"></td>
+        <td th:text="${r.status}"></td>
+    </tr>
+</table>

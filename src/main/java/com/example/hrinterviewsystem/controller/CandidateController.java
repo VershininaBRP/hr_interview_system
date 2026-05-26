@@ -75,6 +75,19 @@ public class CandidateController {
         return "interview";
     }
 
+    @GetMapping("/results")
+    public String myResults(Authentication authentication, Model model) {
+
+        User user = userRepository.findByLogin(authentication.getName());
+
+        model.addAttribute(
+                "results",
+                resultRepository.findByUserId(user.getId())
+        );
+
+        return "candidate-results";
+    }
+
     @PostMapping("/vacancy/{id}/submit")
     public String submitInterview(
             @PathVariable Long id,

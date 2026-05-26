@@ -14,4 +14,5 @@ public interface ResultRepository
     );
 
     List<Result> findAllByOrderByScoreDesc();
+    List<Result> findByUserId(Long userId);
 }
