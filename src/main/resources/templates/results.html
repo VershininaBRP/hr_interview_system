@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Результаты</title>
+</head>
+<body>
+
+<h1>Результаты собеседований</h1>
+
+<table border="1">
+
+    <tr>
+        <th>Кандидат</th>
+        <th>Вакансия</th>
+        <th>Баллы</th>
+        <th>Статус</th>
+    </tr>
+
+    <tr th:each="result : ${results}">
+
+        <td th:text="${result.user.login}"></td>
+
+        <td th:text="${result.vacancy.title}"></td>
+
+        <td th:text="${result.score}"></td>
+
+        <td th:text="${result.status}"></td>
+
+    </tr>
+
+</table>
+
+</body>
+</html>

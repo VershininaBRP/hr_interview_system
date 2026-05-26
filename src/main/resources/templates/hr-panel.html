@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HR Panel</title>
+</head>
+<body>
+
+<h1>HR Панель</h1>
+
+<a href="/hr/vacancy/create">
+    Создать вакансию
+</a>
+
+<a href="/hr/results">
+    Смотреть результаты кандидатов
+</a>
+
+<br><br>
+
+<h2>Список вакансий</h2>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Действия</th>
+    </tr>
+
+    <tr th:each="vacancy : ${vacancies}">
+
+        <td th:text="${vacancy.id}"></td>
+
+        <td th:text="${vacancy.title}"></td>
+
+        <td th:text="${vacancy.description}"></td>
+
+        <td>
+
+            <a th:href="@{/hr/vacancy/{id}/questions(id=${vacancy.id})}">
+                Вопросы
+            </a>
+
+        </td>
+
+    </tr>
+
+</table>
+
+<br>
+
+<a href="/logout">
+    Выйти
+</a>
+
+</body>
+</html>

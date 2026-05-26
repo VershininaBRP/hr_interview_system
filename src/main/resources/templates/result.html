@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Result</title>
+</head>
+<body>
+
+<h1>Результат собеседования</h1>
+
+<h2>
+    Процент соответствия:
+    <span th:text="${score}"></span>%
+</h2>
+
+<h2>
+    Статус:
+    <span th:text="${status}"></span>
+</h2>
+
+<br>
+
+<a href="/candidate/panel">
+    Назад
+</a>
+
+</body>
+</html>

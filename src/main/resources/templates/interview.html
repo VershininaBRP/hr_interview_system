@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Interview</title>
+</head>
+<body>
+
+<h1 th:text="${vacancy.title}"></h1>
+
+<form th:action="@{/candidate/vacancy/{id}/submit(id=${vacancy.id})}"
+      method="post">
+
+    <div th:each="q : ${questions}">
+
+        <h3 th:text="${q.questionText}"></h3>
+
+        <input type="text"
+               name="answers">
+
+        <br><br>
+
+    </div>
+
+    <button type="submit">
+        Завершить собеседование
+    </button>
+
+</form>
+
+</body>
+</html>

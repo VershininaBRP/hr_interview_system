@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Questions</title>
+</head>
+<body>
+
+<h1 th:text="${vacancy.title}"></h1>
+
+<h2>Добавить вопрос</h2>
+
+<form th:action="@{/hr/vacancy/{id}/questions(id=${vacancy.id})}"
+      method="post"
+      th:object="${question}">
+
+    <input type="text"
+           th:field="*{questionText}"
+           placeholder="Вопрос">
+
+    <br><br>
+
+    <input type="text"
+           th:field="*{correctAnswer}"
+           placeholder="Правильный ответ">
+
+    <br><br>
+
+    <input type="number"
+           th:field="*{weight}"
+           placeholder="Вес">
+
+    <br><br>
+
+    <button type="submit">
+        Добавить
+    </button>
+
+</form>
+
+<hr>
+
+<h2>Список вопросов</h2>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Вопрос</th>
+        <th>Ответ</th>
+        <th>Вес</th>
+    </tr>
+
+    <tr th:each="q : ${questions}">
+
+        <td th:text="${q.id}"></td>
+
+        <td th:text="${q.questionText}"></td>
+
+        <td th:text="${q.correctAnswer}"></td>
+
+        <td th:text="${q.weight}"></td>
+
+    </tr>
+
+</table>
+
+<br>
+
+<a href="/hr/panel">
+    Назад
+</a>
+
+</body>
+</html>

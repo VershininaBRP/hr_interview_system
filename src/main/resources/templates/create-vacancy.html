@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Vacancy</title>
+</head>
+<body>
+
+<h1>Создание вакансии</h1>
+
+<form th:action="@{/hr/vacancy/create}"
+      method="post"
+      th:object="${vacancy}">
+
+    <input type="text"
+           th:field="*{title}"
+           placeholder="Название вакансии">
+
+    <br><br>
+
+    <textarea th:field="*{description}"
+              placeholder="Описание"></textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Создать
+    </button>
+
+</form>
+
+<br>
+
+<a href="/hr/panel">
+    Назад
+</a>
+
+</body>
+</html>
