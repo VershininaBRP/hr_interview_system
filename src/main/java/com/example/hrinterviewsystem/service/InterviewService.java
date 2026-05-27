@@ -51,7 +51,6 @@ public class InterviewService {
             String userAnswer = answers
                     .get(String.valueOf(q.getId()));
 
-            // ❗ защита от null (очень важно)
             if (userAnswer == null) {
                 continue;
             }
