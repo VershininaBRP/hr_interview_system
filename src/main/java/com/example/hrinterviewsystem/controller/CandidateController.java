@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/candidate")
@@ -106,7 +107,7 @@ public class CandidateController {
     @PostMapping("/vacancy/{id}/submit")
     public String submitInterview(
             @PathVariable Long id,
-            @RequestParam List<String> answers,
+            @RequestParam Map<String, String> answers,
             Authentication authentication,
             Model model
     ) {

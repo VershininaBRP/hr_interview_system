@@ -89,7 +89,7 @@
 
             <label>
                 <input type="radio"
-                       name="answers"
+                       th:name="${'answers[' + q.id + ']'}"
                        value="да"
                        required>
                 Да
@@ -97,7 +97,7 @@
 
             <label>
                 <input type="radio"
-                       name="answers"
+                       th:name="${'answers[' + q.id + ']'}"
                        value="нет">
                 Нет
             </label>

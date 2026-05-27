@@ -5,6 +5,7 @@ import com.example.hrinterviewsystem.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class InterviewService {
@@ -27,7 +28,7 @@ public class InterviewService {
     }
 
     public Result processInterview(Long vacancyId,
-                                   List<String> answers,
+                                   Map<String, String> answers,
                                    String username) {
 
         Vacancy vacancy = vacancyRepository.findById(vacancyId)
@@ -39,9 +40,7 @@ public class InterviewService {
         int totalScore = 0;
         int maxScore = 0;
 
-        for (int i = 0; i < questions.size(); i++) {
-
-            Question q = questions.get(i);
+        for (Question q : questions) {
 
             maxScore += q.getWeight();
 
@@ -49,9 +48,15 @@ public class InterviewService {
                     .trim()
                     .toLowerCase();
 
-            String userAnswer = answers.get(i)
-                    .trim()
-                    .toLowerCase();
+            String userAnswer = answers
+                    .get(String.valueOf(q.getId()));
+
+            // ❗ защита от null (очень важно)
+            if (userAnswer == null) {
+                continue;
+            }
+
+            userAnswer = userAnswer.trim().toLowerCase();
 
             if (correct.equals(userAnswer)) {
                 totalScore += q.getWeight();
