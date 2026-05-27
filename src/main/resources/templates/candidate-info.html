@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Информация о кандидате</title>
+</head>
+<body>
+
+<h1>Информация о кандидате</h1>
+
+<p>
+    <b>ФИО:</b>
+    <span th:text="${candidate.fullName}"></span>
+</p>
+
+<p>
+    <b>Email:</b>
+    <span th:text="${candidate.email}"></span>
+</p>
+
+<p>
+    <b>Телефон:</b>
+    <span th:text="${candidate.phone}"></span>
+</p>
+
+<p>
+    <b>Описание:</b>
+</p>
+
+<p th:text="${candidate.about}"></p>
+
+<br>
+
+<a href="/hr/results">
+    Назад
+</a>
+
+</body>
+</html>

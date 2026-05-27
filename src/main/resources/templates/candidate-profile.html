@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Мой профиль</title>
+</head>
+<body>
+
+<h1>Мой профиль</h1>
+
+<form method="post" action="/candidate/profile">
+
+    <label>ФИО:</label>
+    <input type="text" name="fullName"
+           th:value="${user.fullName}">
+    <br><br>
+
+    <label>Email:</label>
+    <input type="text" name="email"
+           th:value="${user.email}">
+    <br><br>
+
+    <label>Телефон:</label>
+    <input type="text" name="phone"
+           th:value="${user.phone}">
+    <br><br>
+
+    <label>О себе:</label>
+    <br>
+
+    <textarea name="about"
+              rows="5"
+              cols="40"
+              th:text="${user.about}">
+    </textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Сохранить
+    </button>
+
+</form>
+
+<br>
+
+<a href="/candidate/panel">
+    Назад
+</a>
+
+</body>
+</html>

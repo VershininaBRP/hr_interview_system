@@ -1,6 +1,7 @@
 package com.example.hrinterviewsystem.controller;
 
 import com.example.hrinterviewsystem.entity.Vacancy;
+import com.example.hrinterviewsystem.repository.UserRepository;
 import com.example.hrinterviewsystem.repository.VacancyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ public class HRController {
     private QuestionRepository questionRepository;
     @Autowired
     private ResultRepository resultRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/panel")
     public String hrPanel(Model model) {
@@ -53,6 +56,19 @@ public class HRController {
         );
 
         return "results";
+    }
+    @GetMapping("/candidate/{id}")
+    public String candidateInfo(
+            @PathVariable Long id,
+            Model model
+    ) {
+
+        model.addAttribute(
+                "candidate",
+                userRepository.findById(id).orElseThrow()
+        );
+
+        return "candidate-info";
     }
 
     @PostMapping("/vacancy/create")

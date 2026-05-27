@@ -75,6 +75,21 @@ public class CandidateController {
         return "interview";
     }
 
+    @GetMapping("/profile")
+    public String profilePage(
+            Authentication authentication,
+            Model model
+    ) {
+
+        User user = userRepository.findByLogin(
+                authentication.getName()
+        );
+
+        model.addAttribute("user", user);
+
+        return "candidate-profile";
+    }
+
     @GetMapping("/results")
     public String myResults(Authentication authentication, Model model) {
 
@@ -106,5 +121,25 @@ public class CandidateController {
         model.addAttribute("status", result.getStatus());
 
         return "result";
+    }
+
+    @PostMapping("/profile")
+    public String saveProfile(
+            @ModelAttribute User formUser,
+            Authentication authentication
+    ) {
+
+        User user = userRepository.findByLogin(
+                authentication.getName()
+        );
+
+        user.setFullName(formUser.getFullName());
+        user.setEmail(formUser.getEmail());
+        user.setPhone(formUser.getPhone());
+        user.setAbout(formUser.getAbout());
+
+        userRepository.save(user);
+
+        return "redirect:/candidate/panel";
     }
 }

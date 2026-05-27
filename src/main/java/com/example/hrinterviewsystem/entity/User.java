@@ -3,8 +3,6 @@ package com.example.hrinterviewsystem.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "users")
 @Getter
@@ -17,16 +15,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String login;
 
     private String password;
 
     private String role;
 
-    @OneToMany(mappedBy = "user")
-    private List<CandidateAnswer> answers;
+    private String fullName;
 
-    @OneToMany(mappedBy = "user")
-    private List<Result> results;
+    private String email;
+
+    private String phone;
+
+    @Column(columnDefinition = "TEXT")
+    private String about;
 }

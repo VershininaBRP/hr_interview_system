@@ -18,7 +18,11 @@
 
     <tr th:each="result : ${results}">
 
-        <td th:text="${result.user.login}"></td>
+        <td>
+            <a th:href="@{/hr/candidate/{id}(id=${result.user.id})}"
+               th:text="${result.user.login}">
+            </a>
+        </td>
 
         <td th:text="${result.vacancy.title}"></td>
 
