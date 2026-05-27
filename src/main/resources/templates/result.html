@@ -1,27 +1,80 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Result</title>
+    <title>Результат</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .result-box {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 450px;
+        }
+
+        h1 {
+            color: #1e3a8a;
+        }
+
+        .score {
+            font-size: 28px;
+            margin: 20px 0;
+        }
+
+        .status {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: white;
+            background: #2563eb;
+            padding: 12px 20px;
+            border-radius: 10px;
+        }
+
+        a:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
 </head>
+
 <body>
 
-<h1>Результат теста</h1>
+<div class="result-box">
 
-<h2>
-    Процент соответствия:
-    <span th:text="${score}"></span>%
-</h2>
+    <h1>Результат теста</h1>
 
-<h2>
-    Статус:
-    <span th:text="${status}"></span>
-</h2>
+    <div class="score">
+        Процент соответствия:
+        <b th:text="${score}"></b>%
+    </div>
 
-<br>
+    <div class="status">
+        <span th:text="${status}"></span>
+    </div>
 
-<a href="/candidate/panel">
-    Назад
-</a>
+    <a href="/candidate/panel">
+        Назад
+    </a>
+
+</div>
 
 </body>
 </html>

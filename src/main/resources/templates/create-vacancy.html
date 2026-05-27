@@ -1,38 +1,121 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Create Vacancy</title>
+    <title>Создание вакансии</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+        .info {
+            background: #eef4ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
+
 <body>
 
-<h1>Создание вакансии</h1>
+<div class="container">
 
-<form th:action="@{/hr/vacancy/create}"
-      method="post"
-      th:object="${vacancy}">
+    <h1>Создание вакансии</h1>
 
-    <input type="text"
-           th:field="*{title}"
-           placeholder="Название вакансии">
+    <div class="info">
+        Создайте новую вакансию для кандидатов.
+        Укажите понятное название и подробное описание,
+        чтобы кандидаты понимали требования и специфику должности.
+    </div>
 
-    <br><br>
+    <form th:action="@{/hr/vacancy/create}"
+          method="post"
+          th:object="${vacancy}">
 
-    <textarea th:field="*{description}"
-              placeholder="Описание"></textarea>
+        <label>Название вакансии</label>
 
-    <br><br>
+        <input type="text"
+               th:field="*{title}"
+               placeholder="Например: Java Developer">
 
-    <button type="submit">
-        Создать
-    </button>
+        <label>Описание вакансии</label>
 
-</form>
+        <textarea th:field="*{description}"
+                  placeholder="Введите описание вакансии">
+        </textarea>
 
-<br>
+        <button type="submit">
+            Создать вакансию
+        </button>
 
-<a href="/hr/panel">
-    Назад
-</a>
+    </form>
+
+    <a href="/hr/panel" class="back-link">
+        ← Назад
+    </a>
+
+</div>
 
 </body>
 </html>

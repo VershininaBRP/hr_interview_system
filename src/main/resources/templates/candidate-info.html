@@ -2,37 +2,109 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Информация о кандидате</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #0f766e;
+            margin-top: 0;
+        }
+
+        .info {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .about-box {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #0891b2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #0e7490;
+        }
+
+    </style>
 </head>
+
 <body>
 
-<h1>Информация о кандидате</h1>
+<div class="container">
 
-<p>
-    <b>ФИО:</b>
-    <span th:text="${candidate.fullName}"></span>
-</p>
+    <div class="card">
 
-<p>
-    <b>Email:</b>
-    <span th:text="${candidate.email}"></span>
-</p>
+        <h1>Информация о кандидате</h1>
 
-<p>
-    <b>Телефон:</b>
-    <span th:text="${candidate.phone}"></span>
-</p>
+        <div class="info">
+            <span class="label">ФИО:</span>
+            <span th:text="${candidate.fullName}"></span>
+        </div>
 
-<p>
-    <b>Описание:</b>
-</p>
+        <div class="info">
+            <span class="label">Email:</span>
+            <span th:text="${candidate.email}"></span>
+        </div>
 
-<p th:text="${candidate.about}"></p>
+        <div class="info">
+            <span class="label">Телефон:</span>
+            <span th:text="${candidate.phone}"></span>
+        </div>
 
-<br>
+        <div class="info">
 
-<a href="/hr/results">
-    Назад
-</a>
+            <span class="label">Описание:</span>
+
+            <div class="about-box"
+                 th:text="${candidate.about}">
+            </div>
+
+        </div>
+
+        <a class="btn" href="/hr/results">
+            Назад
+        </a>
+
+    </div>
+
+</div>
 
 </body>
 </html>

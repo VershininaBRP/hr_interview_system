@@ -1,20 +1,110 @@
-<h2>Мои результаты</h2>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Мои результаты</title>
 
-<table>
-    <tr>
-        <th>Вакансия</th>
-        <th>Баллы</th>
-        <th>Статус</th>
-    </tr>
+    <style>
 
-    <tr th:each="r : ${results}">
-        <td th:text="${r.vacancy.title}"></td>
-        <td th:text="${r.score}"></td>
-        <td th:text="${r.status}"></td>
-    </tr>
-</table>
-<br>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+            color: #1f2937;
+        }
 
-<a href="/candidate/panel">
-    Назад
-</a>
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Мои результаты</h1>
+
+        <table>
+
+            <tr>
+                <th>Вакансия</th>
+                <th>Баллы</th>
+                <th>Статус</th>
+            </tr>
+
+            <tr th:each="r : ${results}">
+
+                <td th:text="${r.vacancy.title}"></td>
+
+                <td th:text="${r.score}"></td>
+
+                <td th:text="${r.status}"></td>
+
+            </tr>
+
+        </table>
+
+        <a class="btn" href="/candidate/panel">
+            Назад
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -2,42 +2,107 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Результаты</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+            padding: 14px;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        a.user-link {
+            color: #2563eb;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
+
 <body>
 
-<h1>Результаты тестов</h1>
+<div class="container">
 
-<table border="1">
+    <h1>Результаты тестов</h1>
 
-    <tr>
-        <th>Кандидат</th>
-        <th>Вакансия</th>
-        <th>Баллы</th>
-        <th>Статус</th>
-    </tr>
+    <table>
 
-    <tr th:each="result : ${results}">
+        <tr>
+            <th>Кандидат</th>
+            <th>Вакансия</th>
+            <th>Баллы</th>
+            <th>Статус</th>
+        </tr>
 
-        <td>
-            <a th:href="@{/hr/candidate/{id}(id=${result.user.id})}"
-               th:text="${result.user.login}">
-            </a>
-        </td>
+        <tr th:each="result : ${results}">
 
-        <td th:text="${result.vacancy.title}"></td>
+            <td>
+                <a class="user-link"
+                   th:href="@{/hr/candidate/{id}(id=${result.user.id})}"
+                   th:text="${result.user.login}">
+                </a>
+            </td>
 
-        <td th:text="${result.score}"></td>
+            <td th:text="${result.vacancy.title}"></td>
 
-        <td th:text="${result.status}"></td>
+            <td th:text="${result.score}"></td>
 
-    </tr>
+            <td th:text="${result.status}"></td>
 
-</table>
-<br>
+        </tr>
 
-<a href="/hr/panel">
-    Назад
-</a>
+    </table>
+
+    <a href="/hr/panel" class="back-link">
+        ← Назад
+    </a>
+
+</div>
 
 </body>
 </html>

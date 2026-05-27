@@ -1,35 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Вход</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #dbeafe, #f4f7fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .register-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
+
 <body>
 
-<h2>Вход</h2>
+<div class="login-box">
 
-<form action="/login" method="post">
+    <h2>Вход в систему</h2>
 
-    <input type="text"
-           name="username"
-           placeholder="Логин">
+    <form action="/login" method="post">
 
-    <br><br>
+        <input type="text"
+               name="username"
+               placeholder="Логин">
 
-    <input type="password"
-           name="password"
-           placeholder="Пароль">
+        <input type="password"
+               name="password"
+               placeholder="Пароль">
 
-    <br><br>
+        <button type="submit">
+            Войти
+        </button>
 
-    <button type="submit">
-        Войти
-    </button>
+    </form>
 
-</form>
+    <a href="/register" class="register-link">
+        Регистрация
+    </a>
 
-<a href="/register">
-    Регистрация
-</a>
+</div>
 
 </body>
 </html>

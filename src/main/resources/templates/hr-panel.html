@@ -2,57 +2,211 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>HR Panel</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            color: #1f2937;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #0f766e;
+        }
+
+        .info-box {
+            background: #ecfeff;
+            border-left: 5px solid #0891b2;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        th {
+            background: #0891b2;
+            color: white;
+            padding: 16px;
+            text-align: left;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #0891b2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #0e7490;
+        }
+
+        .actions {
+            margin-bottom: 25px;
+        }
+
+        .actions a {
+            margin-right: 15px;
+        }
+
+        .logout {
+            background: #dc2626;
+        }
+
+        .logout:hover {
+            background: #b91c1c;
+        }
+
+        @media (max-width: 768px) {
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                background: white;
+                border-radius: 10px;
+                padding: 10px;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                border: none;
+                padding: 10px;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
 
-<h1>HR Панель</h1>
+<div class="container">
 
-<a href="/hr/vacancy/create">
-    Создать вакансию
-</a>
+    <div class="header">
 
-<a href="/hr/results">
-    Смотреть результаты кандидатов
-</a>
+        <h1>HR Панель</h1>
 
-<br><br>
+        <div class="info-box">
 
-<h2>Список вакансий</h2>
+            <strong>Рекомендации HR-специалисту:</strong>
 
-<table border="1">
+            <br><br>
 
-    <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Описание</th>
-        <th>Действия</th>
-    </tr>
+            1. Создайте вакансию через кнопку «Создать вакансию».
+            <br>
+            2. Для каждой вакансии добавьте вопросы для тестирования.
+            <br>
+            3. После прохождения тестов кандидатами используйте раздел «Смотреть результаты кандидатов».
+            <br>
+            4. Нажмите на логин кандидата для просмотра его профиля и контактной информации.
+            <br>
+            5. Система автоматически оценивает кандидатов по результатам тестирования.
 
-    <tr th:each="vacancy : ${vacancies}">
+        </div>
 
-        <td th:text="${vacancy.id}"></td>
+    </div>
 
-        <td th:text="${vacancy.title}"></td>
+    <div class="actions">
 
-        <td th:text="${vacancy.description}"></td>
+        <a class="btn" href="/hr/vacancy/create">
+            Создать вакансию
+        </a>
 
-        <td>
+        <a class="btn" href="/hr/results">
+            Смотреть результаты кандидатов
+        </a>
 
-            <a th:href="@{/hr/vacancy/{id}/questions(id=${vacancy.id})}">
-                Вопросы
-            </a>
+    </div>
 
-        </td>
+    <h2>Список вакансий</h2>
 
-    </tr>
+    <table>
 
-</table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Действия</th>
+        </tr>
 
-<br>
+        <tr th:each="vacancy : ${vacancies}">
 
-<a href="/logout">
-    Выйти
-</a>
+            <td th:text="${vacancy.id}"></td>
+
+            <td th:text="${vacancy.title}"></td>
+
+            <td th:text="${vacancy.description}"></td>
+
+            <td>
+
+                <a class="btn"
+                   th:href="@{/hr/vacancy/{id}/questions(id=${vacancy.id})}">
+                    Вопросы
+                </a>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <br>
+
+    <a class="btn logout" href="/logout">
+        Выйти
+    </a>
+
+</div>
 
 </body>
 </html>
