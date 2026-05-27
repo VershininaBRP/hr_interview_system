@@ -14,8 +14,20 @@
 
         <h3 th:text="${q.questionText}"></h3>
 
-        <input type="text"
-               name="answers">
+        <label>
+            <input type="radio"
+                   name="answers"
+                   value="да"
+                   required>
+            Да
+        </label>
+
+        <label>
+            <input type="radio"
+                   name="answers"
+                   value="нет">
+            Нет
+        </label>
 
         <br><br>
 
