@@ -116,6 +116,7 @@ public class HRController {
                 .findById(id)
                 .orElseThrow();
 
+        question.setId(null);
         question.setVacancy(vacancy);
 
         questionRepository.save(question);
